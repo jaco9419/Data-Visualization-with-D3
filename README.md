@@ -49,3 +49,43 @@ Change the callback function for the y attribute to set the bars right-side-up. 
 
 Note
 In general, the relationship is <code>y = h - m * d</code>, where m is the constant that scales the data points.
+
+## Add Attributes to the Circle Elements
+The last challenge created the <code>circle</code> elements for each point in the <code>dataset</code>, and appended them to the SVG canvas. But D3 needs more information about the position and size of each <code>circle</code> to display them correctly.
+
+A <code>circle</code> in SVG has three main attributes. The <code>cx</code> and <code>cy</code> attributes are the coordinates. They tell D3 where to position the center of the shape on the SVG canvas. The radius (<code>r</code> attribute) gives the size of the <code>circle</code>.
+
+Just like the <code>rect</code> <code>y</code> coordinate, the <code>cy</code> attribute for a circle is measured from the top of the SVG canvas, not from the bottom.
+
+All three attributes can use a callback function to set their values dynamically. Remember that all methods chained after <code>data(dataset)</code> run once per item in dataset. The d parameter in the callback function refers to the current item in dataset, which is an array for each point. You use bracket notation, like <code>d[0]</code>, to access the values in that array.
+
+<pre><code>
+const dataset = [
+                  [ 34,    78 ],
+                  [ 109,   280 ],
+                  [ 310,   120 ],
+                  [ 79,    411 ],
+                  [ 420,   220 ],
+                  [ 233,   145 ],
+                  [ 333,   96 ],
+                  [ 222,   333 ],
+                  [ 78,    320 ],
+                  [ 21,    123 ]
+                ];
+
+    const w = 500;
+    const h = 500;
+
+    const svg = d3.select("body")
+                  .append("svg")
+                  .attr("width", w)
+                  .attr("height", h);
+
+    svg.selectAll("circle")
+       .data(dataset)
+       .enter()
+       .append("circle")
+       .attr("cx", d => d[0])
+       .attr("cy", d=> h- d[1])
+       .attr("r", 5)
+</code></pre>
