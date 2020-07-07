@@ -59,8 +59,7 @@ Just like the <code>rect</code> <code>y</code> coordinate, the <code>cy</code> a
 
 All three attributes can use a callback function to set their values dynamically. Remember that all methods chained after <code>data(dataset)</code> run once per item in dataset. The d parameter in the callback function refers to the current item in dataset, which is an array for each point. You use bracket notation, like <code>d[0]</code>, to access the values in that array.
 
-<pre><code>
-const dataset = [
+<pre><code>const dataset = [
                   [ 34,    78 ],
                   [ 109,   280 ],
                   [ 310,   120 ],
@@ -87,5 +86,4 @@ const dataset = [
        .append("circle")
        .attr("cx", d => d[0])
        .attr("cy", d=> h- d[1])
-       .attr("r", 5)
-</code></pre>
+       .attr("r", 5) </code></pre>
