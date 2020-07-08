@@ -141,8 +141,7 @@ Scales set shape coordinate attributes to place the data points onto the SVG can
        .data(dataset)
        .enter()
        .append("text")
-       .text((d) =>  (d[0] + ", "
- + d[1]))
+       .text((d) =>  (d[0] + ", " + d[1]))
        .attr("x", d => xScale(d[0] + 10))
        .attr("y", d => yScale(d[1]))
   </script></code></pre>
